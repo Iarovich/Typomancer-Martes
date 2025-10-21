@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e43bca628f4e0e4898c33d58a01a010, type: 3}
+  m_Name: Water
+  m_EditorClassIdentifier: 
+  cardName: Water
+  element: 1
+  icon: {fileID: 4945239985283531135, guid: 8c49aebbf0619e14fa689d53d45a8330, type: 3}
+  description: 
+  power: 10
+  vfxPrefab: {fileID: 6077168872989578693, guid: f514474ff8e94554d8477de1f2f601b0, type: 3}
+  sfxClip: {fileID: 8300000, guid: 8cf7b39a419dae04a9b76668bf51a56e, type: 3}
+  sfxVolume: 1

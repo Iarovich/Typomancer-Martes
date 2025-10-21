@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e43bca628f4e0e4898c33d58a01a010, type: 3}
+  m_Name: Dark
+  m_EditorClassIdentifier: 
+  cardName: Dark
+  element: 4
+  icon: {fileID: 2738577844032149819, guid: df6fff1418db1c1408fb81078694b54e, type: 3}
+  description: 
+  power: 10
+  vfxPrefab: {fileID: 5824670795371433373, guid: f6fd568b816c64943a44efc3add3a881, type: 3}
+  sfxClip: {fileID: 8300000, guid: 300b2cc3ebb1fe842b8f5a74272c57c9, type: 3}
+  sfxVolume: 1

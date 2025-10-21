@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e43bca628f4e0e4898c33d58a01a010, type: 3}
+  m_Name: Air
+  m_EditorClassIdentifier: 
+  cardName: Air
+  element: 2
+  icon: {fileID: 5759857096319705333, guid: 2ae3b721ed8899e4eb9f00aae4588c63, type: 3}
+  description: 
+  power: 10
+  vfxPrefab: {fileID: 9027514048236820045, guid: effb650189dc5714e9e9801b1cfb3991, type: 3}
+  sfxClip: {fileID: 8300000, guid: 17b7b032f50a73b4a9171f6dcc8597c5, type: 3}
+  sfxVolume: 1
