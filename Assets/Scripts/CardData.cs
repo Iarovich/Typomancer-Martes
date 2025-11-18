@@ -1,5 +1,7 @@
 using UnityEngine;
 
+//Type Object - define tipos de cartas con datos compartidos
+//Flyweight - multiples instancias comparten el mismo CardData (ScriptableObject)
 [CreateAssetMenu(fileName = "CardData_", menuName = "Typomancer/CardData")]
 public class CardData : ScriptableObject
 {

@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
+    //Singleton
     public static AudioManager Instance { get; private set; }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
@@ -27,6 +28,7 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
+        //Singleton - garantiza una unica instancia global
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
         if (dontDestroyOnLoad) DontDestroyOnLoad(gameObject);
@@ -75,7 +77,7 @@ public class AudioManager : MonoBehaviour
         if (!snapToListenerOnSceneLoad) return;
         if (sfxSource != null && sfxSource.spatialBlend > 0f)
         {
-            var listener = FindObjectOfType<AudioListener>();
+            var listener = FindFirstObjectByType<AudioListener>();
             sfxSource.transform.position =
                 listener != null ? listener.transform.position :
                 (Camera.main != null ? Camera.main.transform.position : Vector3.zero);
@@ -110,7 +112,7 @@ public class AudioManager : MonoBehaviour
         
         if (sfxSource.spatialBlend > 0f)
         {
-            var listener = FindObjectOfType<AudioListener>();
+            var listener = FindFirstObjectByType<AudioListener>();
             sfxSource.transform.position =
                 listener != null ? listener.transform.position :
                 (Camera.main != null ? Camera.main.transform.position : Vector3.zero);

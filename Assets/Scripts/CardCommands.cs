@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//Command - implementaciones concretas que encapsulan acciones de cartas
 public class FireCommand : ICardCommand
 {
     public void Execute(Enemy enemy, Health playerHealth, HandManager handManager, CardData data, CardEffectHandler context)

@@ -42,16 +42,16 @@ public class DeckSystem : MonoBehaviour
         Debug.Log($"[DeckSystem] Mazo inicial creado: {drawPile.Count} cartas. Descarte: {discardPile.Count}");
     }
 
+    //Flyweight - Múltiples cartas comparten el mismo CardData (reutilización de datos)
     private void AddCopies(List<CardData> list, CardData card, int count)
     {
         if (card == null || count <= 0) return;
-        for (int i = 0; i < count; i++) list.Add(card);
+        for (int i = 0; i < count; i++) list.Add(card); // Misma referencia, no nuevas instancias
     }
 
-    /// <summary>
+
     /// Roba 1 carta. Si el mazo está vacio, intenta mezclar el descarte y continuar.
     /// Si ambos estan vacios, devuelve null.
-    /// </summary>
     public CardData DrawCard()
     {
         
@@ -71,18 +71,15 @@ public class DeckSystem : MonoBehaviour
         return drawPile.Dequeue();
     }
 
-    /// <summary>
     /// Envia una carta al mazo de descarte (tope del stack).
-    /// </summary>
     public void DiscardCard(CardData card)
     {
         if (card == null) return;
         discardPile.Push(card);
     }
 
-    /// <summary>
     /// Mezcla TODO el descarte y lo pasa al mazo 
-    /// </summary>
+
     private void ShuffleDiscardIntoDeck()
     {
         var temp = new List<CardData>(discardPile.Count);
@@ -110,26 +107,20 @@ public class DeckSystem : MonoBehaviour
     }
 
 
-
-    /// <summary>
     /// Agrega una carta arriba del mazo (al final de la cola). No mezcla automaticamente. CARTAS A AGREGAR MAS ADELANTE
-    /// </summary>
     public void AddCardToDeck(CardData card)
     {
         if (card == null) return;
         drawPile.Enqueue(card);
     }
 
-    /// <summary>
     /// Agrega N copias al mazo No mezcla automáticamente.
-    /// </summary>
     public void AddCopiesToDeck(CardData card, int count)
     {
         if (card == null || count <= 0) return;
         for (int i = 0; i < count; i++) drawPile.Enqueue(card);
     }
 
-    // ——— Debug helpers ———
     public int DrawCount => drawPile.Count;
     public int DiscardCount => discardPile.Count;
 }
