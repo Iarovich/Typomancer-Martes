@@ -1144,10 +1144,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4930d8c09624242a5d40a62c0585aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: {fileID: 2064014007}
-  playerHealth: {fileID: 709693613}
-  enemyBar: {fileID: 1647473975}
-  playerBar: {fileID: 1765188667}
+  playerHealthBar: {fileID: 0}
+  enemyHealthBar: {fileID: 0}
+  playerHealthText: {fileID: 0}
+  enemyHealthText: {fileID: 0}
+  spellInputText: {fileID: 0}
+  deckCountText: {fileID: 0}
+  discardCountText: {fileID: 0}
+  messageText: {fileID: 0}
 --- !u!4 &524534913
 Transform:
   m_ObjectHideFlags: 0
@@ -1949,6 +1953,7 @@ MonoBehaviour:
   currentEnemy: {fileID: 277665646}
   playerHealth: {fileID: 709693613}
   spellHistory: {fileID: 0}
+  handManager: {fileID: 0}
   enemyAnchor: {fileID: 2009290255}
   playerAnchor: {fileID: 784096346}
   worldFXParent: {fileID: 1491406164}
@@ -3172,11 +3177,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1709525208708524546, guid: b7b426477e0d21142b94cdd627809409, type: 3}
       propertyPath: damage
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1709525208708524546, guid: b7b426477e0d21142b94cdd627809409, type: 3}
       propertyPath: attackCooldown
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1954483098391238541, guid: b7b426477e0d21142b94cdd627809409, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3224,7 +3229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4282862964396789127, guid: b7b426477e0d21142b94cdd627809409, type: 3}
       propertyPath: maxHealth
-      value: 250
+      value: 220
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

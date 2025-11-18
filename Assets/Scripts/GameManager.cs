@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+// Facade - Proporciona una interfaz simplificada para acceder a multiples sistemas complejos
 public class GameManager : MonoBehaviour
 {
     [Header("Core refs")]
@@ -8,12 +10,13 @@ public class GameManager : MonoBehaviour
     public TypingManager typing;
     public Enemy enemy;
     public Player player;
-    [Header("UI (opcional si seguís usando barras en esta escena)")]
+    public PlayerMemento memento;
+    [Header("UI (opcional si seguï¿½s usando barras en esta escena)")]
     public UIManager uiManager;
     [Header("Escena a cargar al ganar (configurable por nivel)")]
     [SerializeField] private string victorySceneName = "Victory";
     
-    // --- Stats básicos para la pantalla de resultados ---
+    //Stats bï¿½sicos para la pantalla de resultados
     private float elapsedSeconds;
     private int spellsCast;
     private int correctCasts;
@@ -26,30 +29,32 @@ public class GameManager : MonoBehaviour
     {
         elapsedSeconds += Time.deltaTime;
     }
+    //Facade - MÃ©todo que simplifica la inicializaciÃ³n de mÃºltiples sistemas
     public void StartCombat()
     {
-        if (deck == null) deck = FindObjectOfType<DeckSystem>();
-        if (hand == null) hand = FindObjectOfType<HandManager>();
-        if (typing == null) typing = FindObjectOfType<TypingManager>();
-        if (enemy == null) enemy = FindObjectOfType<Enemy>();
-        if (player == null) player = FindObjectOfType<Player>();
+        //Facade - Obtiene referencias a sistemas complejos (oculta la complejidad)
+        if (deck == null) deck = FindFirstObjectByType<DeckSystem>();
+        if (hand == null) hand = FindFirstObjectByType<HandManager>();
+        if (typing == null) typing = FindFirstObjectByType<TypingManager>();
+        if (enemy == null) enemy = FindFirstObjectByType<Enemy>();
+        if (player == null) player = FindFirstObjectByType<Player>();
 
         // Reset de stats
         elapsedSeconds = 0f;
         spellsCast = 0;
         correctCasts = 0;
 
-
-        // Inicializar combate
+        //Facade - Coordina la inicializacion de sistemas (simplifica el uso)
+        //Inicializar combate
         deck.InitializeDeck();
         hand.StartHand();
 
-
-        // Pasar referencias a efectos
+        //Pasar referencias a efectos
         var effectHandler = typing != null ? typing.GetComponent<CardEffectHandler>() : null;
         if (effectHandler != null)
-            effectHandler.SetReferences(enemy, player != null ? player.PlayerHealth : FindObjectOfType<Health>());
+            effectHandler.SetReferences(enemy, player != null ? player.PlayerHealth : FindFirstObjectByType<Health>());
         
+        //Eventos de muerte
         var eH = enemy != null ? enemy.GetComponent<Health>() : null;
         if (eH != null)
         {
@@ -67,7 +72,7 @@ public class GameManager : MonoBehaviour
     private void HandleAnySpellCast() { spellsCast++; }
     private void HandleCorrectCast() { correctCasts++; }
 
-    // --- Finales de partida ---
+    //Finales de partida
     private void OnEnemyDeath()
     {
         PushResult(ResultType.Victory);

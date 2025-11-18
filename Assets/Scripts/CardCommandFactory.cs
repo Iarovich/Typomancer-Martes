@@ -1,7 +1,9 @@
 using UnityEngine;
 
+//Factory - centraliza la creación de comandos según el elemento
 public static class CardCommandFactory
 {
+    //Factory - metodo que crea instancias de comandos
     public static ICardCommand Create(CardElement element)
     {
         return element switch

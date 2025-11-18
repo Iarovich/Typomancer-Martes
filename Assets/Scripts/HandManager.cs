@@ -12,7 +12,7 @@ public class HandManager : MonoBehaviour
     private readonly List<CardView> handViews = new List<CardView>();
     void Start()
     {
-        if (deckSystem == null) deckSystem = FindObjectOfType<DeckSystem>();
+        if (deckSystem == null) deckSystem = FindFirstObjectByType<DeckSystem>();
     }
     // Inicio de combate: roba SOLO initialHandSize 
     public void StartHand()

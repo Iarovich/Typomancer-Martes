@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Health))]
 public class Player : MonoBehaviour
 {
-    
+    //Singleton
     public static Player Instance { get; private set; }
 
     private Health health;
@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-     
+        //Singleton - garantiza una unica instancia global
         if (Instance != null && Instance != this)
         {
             Debug.LogWarning("Ya existe una instancia de Player, eliminando esta.");

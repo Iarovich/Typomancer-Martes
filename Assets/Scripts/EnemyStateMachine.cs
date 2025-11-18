@@ -1,8 +1,11 @@
 using UnityEngine;
 using System.Collections;
 
+//State - gestiona los estados del enemigo
+//Strategy - cada estado representa una estrategia de comportamiento diferente
 public class EnemyStateMachine : MonoBehaviour
 {
+    //State - Define los posibles estados
     public enum EnemyState
     {
         Idle,
@@ -11,6 +14,7 @@ public class EnemyStateMachine : MonoBehaviour
         Dead
     }
 
+    //State - estado actual del enemigo
     private EnemyState currentState;
     private Enemy enemy;
 
@@ -20,24 +24,29 @@ public class EnemyStateMachine : MonoBehaviour
         currentState = EnemyState.Idle;
     }
 
+    //State - cambia el estado del enemigo
+    //Strategy - al cambiar el estado, cambia la estrategia de comportamiento
     public void ChangeState(EnemyState newState)
     {
         currentState = newState;
 
+        //Strategy - cada caso representa una estrategia diferente de comportamiento
         switch (currentState)
         {
-            case EnemyState.Idle:
+            case EnemyState.Idle: // Espera/pasividad
                 break;
-            case EnemyState.Attacking:
+            case EnemyState.Attacking: // Ataque agresivo
                 break;
-            case EnemyState.Hurt:
+            case EnemyState.Hurt: // Reacción al daño
                 StartCoroutine(HurtCoroutine());
                 break;
-            case EnemyState.Dead:
+            case EnemyState.Dead: // Inactividad permanente
                 break;
         }
     }
 
+    //State - actualiza el comportamiento según el estado actual
+    //Strategy - el comportamiento se ejecuta según la estrategia (estado) actual
     public void UpdateState()
     {
         switch (currentState)

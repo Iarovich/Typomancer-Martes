@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int currentHealth = -1;
 
-    // Eventos de observer
+    // Observer - eventos que notifican a los observadores
     public UnityEvent OnDeath;
     public UnityEvent<int> OnHPChanged;
 
@@ -17,7 +17,7 @@ public class Health : MonoBehaviour
         NotifyHPChanged();
     }
 
-    // Método para el obverver
+    // Mï¿½todo para el obverver
     private void NotifyHPChanged()
     {
         OnHPChanged?.Invoke(currentHealth);
@@ -31,6 +31,7 @@ public class Health : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         NotifyHPChanged();
 
+        // Observer - notifica a los observadores sobre la muerte
         if (currentHealth == 0)
             OnDeath?.Invoke();
     }

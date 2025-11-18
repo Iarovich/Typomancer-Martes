@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private bool useAutoAttack = false;
 
     [Header("State Machine")]
+    // State - referencia a la máquina de estados
+    //Strategy - la máquina de estados define la estrategia de comportamiento
     public EnemyStateMachine stateMachine;
 
     private float cooldown;
@@ -44,6 +46,8 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         cooldown -= Time.deltaTime;
+        //State - actualiza el comportamiento según el estado actual
+        //Strategy - ejecuta la estrategia de comportamiento del estado actual
         stateMachine?.UpdateState();
 
         if (!useAutoAttack || !canAttack) return;
@@ -103,6 +107,8 @@ public class Enemy : MonoBehaviour
         if (col2d) col2d.enabled = false;
 
         useAutoAttack = false;
+        //State - cambia al estado Dead
+        //Strategy - cambia a la estrategia de inactividad permanente
         stateMachine?.ChangeState(EnemyStateMachine.EnemyState.Dead);
     }
 }

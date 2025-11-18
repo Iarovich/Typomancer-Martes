@@ -33,7 +33,7 @@ public class CardEffectHandler : MonoBehaviour
         if (playerAnchor == null && playerHealthRef != null) playerAnchor = playerHealthRef.transform;
 
         if (handManager == null)
-            handManager = FindObjectOfType<HandManager>();
+            handManager = FindFirstObjectByType<HandManager>();
     }
 
     public void ApplyEffect(CardData card)
@@ -41,6 +41,7 @@ public class CardEffectHandler : MonoBehaviour
         if (card == null) return;
         spellHistory?.AddToHistory(card);
 
+        //Factory - crea el comando apropiado segun el elemento
         ICardCommand command = CardCommandFactory.Create(card.element);
         if (command == null)
         {
@@ -48,6 +49,7 @@ public class CardEffectHandler : MonoBehaviour
             return;
         }
 
+        // Command - ejecuta el comando encapsulado
         command.Execute(currentEnemy, playerHealth, handManager, card, this);
 
         AudioManager.Instance?.PlaySFX(card.sfxClip, card.sfxVolume);

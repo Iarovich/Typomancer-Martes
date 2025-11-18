@@ -4,9 +4,10 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    //Patron:Singleton
     public static UIManager Instance { get; private set; }
 
-    // --- Referencias de UI ---
+    // Referencias de UI
     [Header("Referencias UI")]
     [SerializeField] private Slider playerHealthBar;
     [SerializeField] private Slider enemyHealthBar;
@@ -19,7 +20,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        // Patrón Singleton
+        //Singleton
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject); 

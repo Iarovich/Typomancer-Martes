@@ -4,6 +4,7 @@ public enum ResultType { Victory, Defeat }
 
 public class ResultCarrier : MonoBehaviour
 {
+    //Singleton
     public static ResultCarrier Instance { get; private set; }
 
     [Header("Payload")]
@@ -15,10 +16,11 @@ public class ResultCarrier : MonoBehaviour
     public string lastGameSceneName = "Game2";
 
        
-    public float elapsedSeconds;  // duración de la run
+    public float elapsedSeconds;  // duraciï¿½n de la run
 
     void Awake()
     {
+        // Singleton
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
         DontDestroyOnLoad(gameObject);
